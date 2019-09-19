@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => 587,
+    'port' => 465,
 
     /*
     |--------------------------------------------------------------------------
@@ -100,6 +100,7 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+    // 'pretend' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -120,12 +121,12 @@ return [
         ],
     ],
 
-    // 'markdown' => [
-    //     'theme' => 'default',
+    'markdown' => [
+        'theme' => 'default',
 
-    //     'paths' => [
-    //         resource_path('views/vendor/mail'),
-    //     ],
-    // ],
+        'paths' => [
+            resource_path('views/vendor/mail'),
+        ],
+    ],
 
 ];

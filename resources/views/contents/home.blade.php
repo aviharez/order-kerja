@@ -141,20 +141,20 @@
                   <td>{{ $item->description }}</td>
                   <td>{{ $item->unit }}</td>
                   <td>
-                    @if ($item->status == 'Waiting')
-                      <span class="badge badge-info">{{ $item->status }}</span>
+                    @if ($item->priority == 'E')
+                      <span class="badge badge-danger">{{ $item->priority }}</span>
                     @endif
-                    @if ($item->status == 'Queue')
-                      <span class="badge badge-warning">{{ $item->status }}</span>
+                    @if ($item->priority == '1')
+                      <span class="badge badge-warning">{{ $item->priority }}</span>
                     @endif
-                    @if ($item->status == 'On Progress')
-                      <span class="badge badge-primary">{{ $item->status }}</span>
+                    @if ($item->priority == '2')
+                      <span class="badge badge-primary">{{ $item->priority }}</span>
                     @endif
-                    @if ($item->status == 'Rejected')
-                      <span class="badge badge-danger">{{ $item->status }}</span>
+                    @if ($item->priority == '3')
+                      <span class="badge badge-info">{{ $item->priority }}</span>
                     @endif
-                    @if ($item->status == 'Finished')
-                      <span class="badge badge-success">{{ $item->status }}</span>
+                    @if ($item->priority == '4')
+                      <span class="badge badge-success">{{ $item->priority }}</span>
                     @endif
                   </td>
                 </tr>

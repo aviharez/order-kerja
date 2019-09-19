@@ -111,16 +111,18 @@ class OrderController extends Controller
             
         $order->save();
 
+        $user = Auth::user();
+        $kd_biaya = substr($user->username, 3);
+        $pic = Executor::where('kd_pusat_biaya', $kd_biaya)->get()[0]->pic;
+        $pegawai = Pegawai::where('no_badge', $pic)->get()[0]->nama;
+
         $data = [
-            'name' => "Syifa Nurzain",
-            'email' => "elzainsyifa@gmail.com",
-            'gender' => "Laki - laki",
-            'address' => "Bandung",
-            'phone' => "08765435151",
-            'password' => "inipass"
+            'name' => $pegawai,
+            'peminta' => $request->get('pegawai'),
+            'order' => $request->get('kd_mesin')
         ];
 
-        $sent = EmailSender::send($data, 'emails.approvement', 'Terdapat Order Baru', 'elzainsyifa@gmail.com', 'Syifa Nurzain');
+        $sent = EmailSender::send($data, 'emails.approvement', 'Order Baru', 'ronabulaiz@gmail.com', 'Imron Abu Laiz');
         if($sent){
             return redirect('/order')->with(['_msg'=>'Permintaan berhasil diajukan','_e'=>'success']);
         } else {
